@@ -1,3 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
+from quotes.models import Quote
+def random_quote(request):
+    quote = Quote.objects.order_by('?').first()  # Get a random quote
+    return render(request,'quote.html',{'quote': quote})  # Pass the quote to the template
+    
